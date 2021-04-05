@@ -1,0 +1,22 @@
+import { RootAction } from '../store'
+import { createInitialAuthState, AuthState } from './state'
+
+export function authReducer(state: Readonly<AuthState>, action: RootAction): AuthState {
+  state = state || createInitialAuthState()
+
+  switch (action.type) {
+    case 'UserLoggedIn':
+      return {
+        ...state,
+        ticket: action.payload.ticket,
+      }
+    case 'UserLoggedOut':
+      return {
+        ...state,
+        ticket: null,
+        user: null,
+      }
+    default:
+      return state
+  }
+}
