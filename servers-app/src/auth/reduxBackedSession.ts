@@ -1,5 +1,5 @@
 import { Store } from 'redux'
-import { Session } from './ssoService'
+import { Session } from './session'
 import { AuthTicket } from './oauthService'
 import { State } from '../store'
 import { userLoggedIn, userLoggedOut } from './actions'

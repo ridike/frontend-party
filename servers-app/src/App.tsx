@@ -1,10 +1,9 @@
-// import React from 'react';
 import { ThemeProvider } from './styled-typed'
 import { History } from 'history'
 import { RequireAuth } from './auth/requireAuth'
-import { SsoService } from './auth/ssoService'
-import SsoSuccessPage from './auth/ssoSuccessPage'
-import { Router, Route, Switch, RouteComponentProps } from 'react-router-dom'
+import { LoginService } from './auth/loginService'
+import { Navigation } from './navigation'
+import { Router, Route, Switch, RouteComponentProps, Redirect } from 'react-router-dom'
 import { defaultTheme } from './theme'
 import LoginPage from './auth/loginPage'
 import ServersList from './servers'
@@ -12,7 +11,8 @@ import './App.css'
 
 interface AppProps {
   history: History
-  ssoService: SsoService
+  loginService: LoginService
+  navigation: Navigation
 }
 
 function App(props: AppProps) {
@@ -25,9 +25,9 @@ function App(props: AppProps) {
             path="/login"
             render={(p: RouteComponentProps<any>) =>
               <LoginPage
-                // login={this.props.loginService.login}
+                login={props.loginService.login}
                 history={p.history}
-                ssoService={props.ssoService}
+                navigation={props.navigation}
               />}
           />
           <Route
@@ -46,15 +46,8 @@ function App(props: AppProps) {
             }
           />
           <Route
-              exact
-              path="/sso_auth/success"
-              render={(p: RouteComponentProps<any>) =>
-                <SsoSuccessPage
-                  history={p.history}
-                  ssoService={props.ssoService}
-                  match={p.match}
-                />}
-            />
+            render={() => <Redirect to={`/servers`} />}
+          />
         </Switch>
       </Router>
     </ThemeProvider>

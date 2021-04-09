@@ -1,5 +1,5 @@
 import 'isomorphic-fetch'
-import 'core-js/fn/object/entries'
+// import 'core-js/fn/object/entries'
 
 export interface OAuthSettings {
   tokenEndpoint: string
