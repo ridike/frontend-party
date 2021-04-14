@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '../styled-typed'
 import { History, Location } from 'history'
+import { TableLoader } from '../components/loaders'
 import { DataTable, HeaderRow, DataRow, TableHeader, Cell, Sorting } from '../components/table'
 import { ServersInfoService, Server } from './infoService'
 import { parseSearch, renderSearch } from '../navigation'
@@ -21,6 +22,7 @@ interface ListProps {
 function List(props: ListProps) {
   const queryItems = parseSearch(props.location.search)
   const [ servers, setServers ] = React.useState<Server[]>([])
+  const [ loading, setLoading ] = React.useState<boolean>(true)
   const [ sortBy, setSortBy ] = React.useState<string>(queryItems.sortBy || 'name')
   const [ sortDirection, setSortDirection ] = React.useState<SortDirection>(queryItems.sortDirection as SortDirection || 'desc')
 
@@ -32,6 +34,8 @@ function List(props: ListProps) {
       } catch {
         // todo display messaage
         alert('could not fetch server list')
+      } finally {
+        setLoading(false)
       }
     }
     getServers()
@@ -92,7 +96,8 @@ function List(props: ListProps) {
             Distance
           </TableHeader>
         </HeaderRow>
-        {servers.map((s, i) =>
+        {loading && <TableLoader/>}
+        {!loading && servers.map((s, i) =>
           <DataRow key={i}>
             <Cell>{s.name}</Cell>
             <Cell>{s.distance}</Cell>
