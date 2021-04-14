@@ -9,6 +9,8 @@ import { PageHeader } from '../components/text'
 
 const ServersPage = styled.div`
   padding: 0 0 3em 0;
+  max-width: 960px;
+  margin: auto;
 `
 type SortDirection = 'asc'|'desc'
 

@@ -33,7 +33,6 @@ const PageContentScroll = styled.div`
 `
 
 const PageContentSizer = styled.div`
-  width: 960px;
   margin: 0 30px;
 
   @media screen and (min-width: 1180px) {

@@ -11,14 +11,13 @@ interface ActionButtonProps {
   block?: boolean
   kind?: ButtonKind
   size?: ButtonSize
-  secondary?: boolean
   doneText?: string
   width?: string
 }
 
 const defaultCss = css`
   background: ${props => props.theme.colors.primary};
-
+  color: #FFFFFF;
   &:hover:not(:disabled) {
     background: ${props => transparency(props.theme.colors.primary, 0.92)};
   }
@@ -53,47 +52,6 @@ const kinds: { [key in ButtonKind]: FlattenInterpolation<any> } = {
   disabled: disabledCss,
 }
 
-const secondaryDefaultCss = css`
-  border: 1px solid ${props => props.theme.colors.status.disabled};
-  color: ${props => props.theme.colors.text};
-
-  &:hover:not(:disabled) {
-    background: ${props => transparency(props.theme.colors.status.disabled, 0.3)};
-    border: 1px solid transparent;
-  }
-`
-const secondaryActionCss = css`
-  border: 1px solid ${props => transparency(props.theme.colors.altPrimary, 0.3)};
-  color: ${props => props.theme.colors.altPrimary};
-
-  &:hover:not(:disabled) {
-    background: ${props => transparency(props.theme.colors.altPrimary, 0.3)};
-    border: 1px solid transparent;
-  }
-`
-const secondaryDestructiveCss = css`
-  border: 1px solid ${props => transparency(props.theme.colors.status.error, 0.3)};
-  color: ${props => props.theme.colors.status.error};
-  font-weight: 500;
-
-  &:hover:not(:disabled) {
-    background: ${props => transparency(props.theme.colors.status.error, 0.3)};
-    border: 1px solid transparent;
-  }
-`
-const secondaryDisabledCss = css`
-  ${disabledCss}
-  border: 1px solid ${props => props.theme.colors.status.disabled};
-`
-
-const secondaryKinds: { [key in ButtonKind]: FlattenInterpolation<any> } = {
-  default: secondaryDefaultCss,
-  action: secondaryActionCss,
-  success: successCss,
-  destructive: secondaryDestructiveCss,
-  disabled: secondaryDisabledCss,
-}
-
 const blockCss = css`
   display: block;
   width: 100%;
@@ -120,26 +78,6 @@ const sizes: { [key in ButtonSize]: FlattenInterpolation<any> } = {
   large: largeCss,
 }
 
-const secondarySmallCss = css`
-  ${smallCss}
-  padding: 0.188rem 0.5rem;
-`
-const secondaryMediumCss = css`
-  ${mediumCss}
-  font-weight: normal;
-  padding: 0.438rem 1rem;
-`
-const secondaryLargeCss = css`
-  ${largeCss}
-  padding: 0.6875rem 1.43rem;
-`
-
-const secondarySizes: { [key in ButtonSize]: FlattenInterpolation<any> } = {
-  small: secondarySmallCss,
-  medium: secondaryMediumCss,
-  large: secondaryLargeCss,
-}
-
 const ActionButtonBaseCss = css`
     display: inline-block;
     text-align: center;
@@ -152,11 +90,9 @@ const ActionButtonBaseCss = css`
     background: inherit;
     ${(props: ActionButtonProps) => props.width ? `width: ${props.width}` : ''}
 
-    ${(props: ActionButtonProps) => props.secondary ?
-      secondarySizes[props.size || 'medium'] : sizes[props.size || 'medium']}
+    ${(props: ActionButtonProps) => sizes[props.size || 'medium']}
 
-    ${(props: ActionButtonProps) => props.secondary ?
-        secondaryKinds[props.kind || 'default'] : kinds[props.kind || 'default']}
+    ${(props: ActionButtonProps) => kinds[props.kind || 'default']}
 
     font-family: ${props => props.theme.fonts.primary};
     ${(props: ActionButtonProps) => props.block ? blockCss : ''}
@@ -172,7 +108,7 @@ const ActionButtonBaseCss = css`
 
     &:disabled {
       cursor: not-allowed;
-      ${(props: ActionButtonProps) => props.secondary ? secondaryDisabledCss : disabledCss}
+      ${disabledCss}
     }
 `
 
