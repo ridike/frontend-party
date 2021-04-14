@@ -4,14 +4,8 @@ export interface State {
   auth: Readonly<AuthState>
 }
 
-export function createInitialState(): State {
-  return {
-    auth: createInitialAuthState(),
-  }
-}
-
 export function applySavedState(saved: Partial<State>|undefined): State {
-  const initial = createInitialState()
+  const initial = { auth: createInitialAuthState() }
   if (!saved) {
     return initial
   }

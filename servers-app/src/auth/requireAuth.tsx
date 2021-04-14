@@ -2,7 +2,6 @@ import * as React from 'react'
 import { Route, Redirect } from 'react-router'
 import { connect } from 'react-redux'
 import { State } from '../store'
-import { AuthTicket } from './oauthService'
 
 function mapStateToProps(state: State) {
   return {
@@ -11,7 +10,7 @@ function mapStateToProps(state: State) {
 }
 
 export interface RequireAuthProps {
-  ticket: AuthTicket|null
+  ticket: string|null
   children: React.ReactNode
 }
 

@@ -3,16 +3,16 @@ import { History } from 'history'
 import styled from '../styled-typed'
 import { Navigation } from '../navigation'
 import { IconTextInput } from '../components/input'
-import { Link, Text } from '../components/text'
+import { Link } from '../components/text'
 import { delay } from '../utils'
 import {
   ValidationMessage,
   LoginForm,
   LoginHeader,
   LoginContainer
-} from '../components/loginContainer'
+} from '../components/loginComponents'
 import { ActionButton } from '../components/buttons'
-
+import { InfoCard } from '../components/infoCard'
 
 const PasswordWrapper = styled.div`
   position: relative;
@@ -38,9 +38,7 @@ const ForgotPasswordLink = styled(Link)`
 
 const PwdNotification = styled.div`
   position: absolute;
-  height: 3.8rem;
   display: flex;
-  align-items: center;
   left: 27em;
   width: 21em;
   top: 0;
@@ -77,6 +75,10 @@ export default function LoginPage(props: LoginPageProps) {
     }
   }, [showForgotPwdNotification])
 
+  React.useEffect(() => {
+    setMessage('')
+  }, [username, password])
+
   const onSubmit = (evt: any) => {
     evt.preventDefault()
     if (!username || !password) {
@@ -88,9 +90,7 @@ export default function LoginPage(props: LoginPageProps) {
       .then(success => {
         if (success) {
           const destinationPath = props.navigation.query().next
-          const newAccountAddScriptPage = destinationPath ?
-            destinationPath.indexOf('new_account') > 0 && destinationPath.indexOf('add_snippet') > 0 : false
-          if (destinationPath && !newAccountAddScriptPage) {
+          if (destinationPath) {
             if (destinationPath[0] !== '/') {
               props.history.push('/' + destinationPath)
             } else {
@@ -102,7 +102,7 @@ export default function LoginPage(props: LoginPageProps) {
         } else {
           setMessage('Invalid credentials')
         }
-      }).catch(e => {
+      }).catch(() => {
         setMessage('An unknown error has occured. Please try again later.')
       })
   }
@@ -111,9 +111,6 @@ export default function LoginPage(props: LoginPageProps) {
     <LoginContainer>
       <LoginForm id="login-form" noValidate onSubmit={onSubmit}>
         <LoginHeader>Log in to the <strong>Overview</strong></LoginHeader>
-        <ValidationMessage id="login-message" className={message ? 'validation-message-visible' : ''}>
-          {message || '&nbsp;'}
-        </ValidationMessage>
         <IconTextInput
           id="login-username"
           type="text"
@@ -132,13 +129,18 @@ export default function LoginPage(props: LoginPageProps) {
             value={password}
             onChange={evt => setPassword(evt.target.value)}
           />
-        <ForgotPasswordLink href="#" onClick={() => setShowForgotPwdNotification(true)}>Forgot your password?</ForgotPasswordLink>
-        <PwdNotification className={showForgotPwdNotification ? 'visible' : ''}>
-          <Text status='processing'>
-            Very shortly we'll implement a special reset-password page. For now, please contact us at email@servers-app.com
-          </Text>
-        </PwdNotification>
+          <ForgotPasswordLink href="#" onClick={() => setShowForgotPwdNotification(true)}>Forgot your password?</ForgotPasswordLink>
+          <PwdNotification className={showForgotPwdNotification ? 'visible' : ''}>
+            <InfoCard
+              active
+              cardHeader=""
+              cardText={`Very shortly we'll implement a special reset-password page. For now, please contact us at ridike@gmail.com.`}
+            />
+          </PwdNotification>
         </PasswordWrapper>
+        <ValidationMessage id="login-message" className={message ? 'validation-message-visible' : ''}>
+          {message || ''}
+        </ValidationMessage>
         <ActionButton
           id="login-submit"
           size="large"

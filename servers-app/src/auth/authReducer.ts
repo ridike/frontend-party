@@ -1,7 +1,7 @@
 import { RootAction } from '../store'
 import { createInitialAuthState, AuthState } from './state'
 
-export function authReducer(state: Readonly<AuthState>, action: RootAction): AuthState {
+export function authReducer(state: Readonly<AuthState>|undefined, action: RootAction): AuthState {
   state = state || createInitialAuthState()
 
   switch (action.type) {
@@ -12,7 +12,6 @@ export function authReducer(state: Readonly<AuthState>, action: RootAction): Aut
       }
     case 'UserLoggedOut':
       return {
-        ...state,
         ticket: null,
         user: null,
       }

@@ -45,3 +45,12 @@ export const Text = styled.span<TextProps>`
   ${props => props.status === 'processing' ? processingCss : ''}
   ${props => props.status === 'info' ? infoCss : ''}
 `
+
+export const PageHeader = styled.div`
+  color: ${props => props.theme.colors.text};
+  font-size: 1.875em;
+  font-weight: 300;
+  line-height: 45px;
+  text-align: center;
+  margin: 1em 0;
+`

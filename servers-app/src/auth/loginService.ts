@@ -1,17 +1,13 @@
 import { Session } from './session'
-import { OAuthService, AuthTicket } from './oauthService'
-// import { Base64 } from 'js-base64'
-import { Store } from 'redux'
+import { OAuthService } from './oauthService'
 
 export class LoginService {
-  constructor(private session: Session, private oauthService: OAuthService, private store: Store) {
-
+  constructor(private session: Session, private oauthService: OAuthService) {
   }
 
-  private async authenticate(username: string, password: string): Promise<AuthTicket|null> {
+  private async authenticate(username: string, password: string): Promise<string|null> {
     try {
-      const account = this.store.getState().preferences.activeAccount
-      return await this.oauthService.authenticate(username, password, account)
+      return await this.oauthService.authenticate(username, password)
     } catch (e) {
       return null
     }
@@ -26,44 +22,8 @@ export class LoginService {
     return true
   }
 
-  loginWithToken = async (loginToken: string): Promise<boolean> => {
-    try {
-      const account = this.store.getState().preferences.activeAccount
-      const ticket = await this.oauthService.authenticateWithToken(loginToken, account)
-      await this.session.initialize(ticket)
-      return true
-    } catch (e) {
-      return false
-    }
-  }
-
-  loginWithNewUserPassToken = async (username: string, token: string): Promise<boolean> => {
-    const account = this.store.getState().preferences.activeAccount
-    const ticket = await this.oauthService.authenticateWithPassToken(username, token, account)
-    if (!ticket) {
-      return false
-    }
-    await this.session.initialize(ticket)
-    return true
-  }
-
   logout = () => {
     this.session.abandon()
   }
 
-  // ensureTokenNotExpired = async (ticket: AuthTicket): Promise<AuthTicket> => {
-  //   try {
-  //     const payload = JSON.parse(Base64.decode(ticket.accessToken.split('.')[1]))
-  //     const secondsLeft = payload.exp - Math.floor(Date.now() / 1000)
-  //     if (secondsLeft < 30) {
-  //       const newTicket = await this.oauthService.refreshToken(ticket.refreshToken)
-  //       await this.session.initialize(newTicket)
-  //       return newTicket
-  //     }
-  //   } catch (e) {
-  //     this.session.abandon()
-  //     throw e
-  //   }
-  //   return ticket
-  // }
 }

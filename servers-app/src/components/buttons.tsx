@@ -17,17 +17,17 @@ interface ActionButtonProps {
 }
 
 const defaultCss = css`
-  background: ${props => props.theme.colors.brand};
+  background: ${props => props.theme.colors.primary};
 
   &:hover:not(:disabled) {
-    background: hsl(180, 61%, 40%);
+    background: ${props => transparency(props.theme.colors.primary, 0.92)};
   }
 `
 const actionCss = css`
   background: ${props => props.theme.colors.altPrimary};
 
   &:hover:not(:disabled) {
-    background: hsl(212, 90%, 60%);
+    background: ${props => transparency(props.theme.colors.altPrimary, 0.92)};
   }
 `
 const successCss = css`
@@ -37,7 +37,7 @@ const destructiveCss = css`
   background: ${props => props.theme.colors.status.error};
 
   &:hover:not(:disabled) {
-    background: hsl(8, 90%, 60%);
+    background: ${props => transparency(props.theme.colors.status.error, 0.92)};
   }
 `
 const disabledCss = css`
