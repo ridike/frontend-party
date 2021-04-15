@@ -3,6 +3,7 @@ import { History } from 'history'
 import styled from 'styled-typed'
 import { Navigation } from 'navigation'
 import { IconTextInput } from 'components/input'
+import { faUser, faKey } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'components/text'
 import { delay } from 'utils'
 import {
@@ -39,7 +40,7 @@ const ForgotPasswordLink = styled(Link)`
 const PwdNotification = styled.div`
   position: absolute;
   display: flex;
-  left: 27em;
+  left: 28em;
   width: 21em;
   top: 0;
   font-size: .8em;
@@ -119,6 +120,7 @@ export default function LoginPage(props: LoginPageProps) {
           placeholder="Username"
           value={username}
           onChange={evt => setUsername(evt.target.value)}
+          icon={faUser}
         />
         <PasswordWrapper>
           <IconTextInput
@@ -128,13 +130,14 @@ export default function LoginPage(props: LoginPageProps) {
             placeholder="Password"
             value={password}
             onChange={evt => setPassword(evt.target.value)}
+            icon={faKey}
           />
           <ForgotPasswordLink href="#" onClick={() => setShowForgotPwdNotification(true)}>Forgot your password?</ForgotPasswordLink>
           <PwdNotification className={showForgotPwdNotification ? 'visible' : ''}>
             <InfoCard
               active
               cardHeader=""
-              cardText={`Very shortly we'll implement a special reset-password page. For now, please contact us at ridike@gmail.com.`}
+              cardText={`Very shortly I'll implement a special reset-password page. For now, please contact me at ridike@gmail.com.`}
             />
           </PwdNotification>
         </PasswordWrapper>

@@ -33,7 +33,7 @@ export const defaultTheme: DashboardTheme = {
   },
   colors: {
     background: '#F5F7FA',
-    brand: '#33C4CA',
+    brand: '#FF992F',
     primary: '#9369BD',
     secondary: '#F77461',
     text: '#394954',

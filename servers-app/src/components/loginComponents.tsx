@@ -26,7 +26,7 @@ export const LoginForm = styled.form`
     line-height: 1.1875em;
     font-weight: normal;
     border: 0;
-    padding: 1em 1.25em;
+    padding: 1em 1.25em 1em 2.8em;
   }
 
   & button {

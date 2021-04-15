@@ -1,8 +1,8 @@
 import * as React from 'react'
 import styled, { css } from 'styled-typed'
 import { Debounce } from 'debounce'
-import { IconProp } from '@fortawesome/fontawesome'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const INPUT_HEIGHT = '2.2rem'
 
@@ -79,8 +79,8 @@ export function IconTextInput(
   return (
     <IconTextInputContainer block={block}>
       <IconTextInputField {...rest} className={classNames.join(' ')} block />
-      {icon && <></>
-        // <FontAwesomeIcon icon={icon} className="text-input-icon" />
+      {icon &&
+        <FontAwesomeIcon icon={icon} className="text-input-icon" />
       }
     </IconTextInputContainer>
   )
