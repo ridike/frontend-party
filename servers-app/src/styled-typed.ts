@@ -1,7 +1,7 @@
 import * as styledComponents from 'styled-components'
 import { ThemedStyledComponentsModule } from 'styled-components'
 
-import { DashboardTheme } from './theme'
+import { DashboardTheme } from 'theme'
 
 const {
   default: styled,

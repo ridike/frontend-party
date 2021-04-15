@@ -1,6 +1,6 @@
-import { Session } from './auth/session'
-import { OAuthService } from './auth/oauthService'
-import { getIEVersion } from './utils'
+import { Session } from 'auth/session'
+import { OAuthService } from 'auth/oauthService'
+import { getIEVersion } from 'utils'
 import 'isomorphic-fetch'
 
 export interface HttpService {
