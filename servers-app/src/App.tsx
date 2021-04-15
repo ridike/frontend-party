@@ -12,7 +12,6 @@ import { Router, Route, Switch, RouteComponentProps, Redirect } from 'react-rout
 import { defaultTheme } from './theme'
 import LoginPage from './auth/loginPage'
 import ServersList from './servers'
-import './App.css'
 
 const Layout = styled.div`
   font-family: ${props => props.theme.fonts.primary};

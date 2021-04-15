@@ -25,7 +25,6 @@ function saveState(state: Partial<State>) {
 }
 
 export function createPersistedStore(): Store<State> {
-  // const store = createReduxStore()
   const savedState = loadState()
   const state = applySavedState(savedState)
   const store = createReduxStore(state)
