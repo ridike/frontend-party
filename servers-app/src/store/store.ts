@@ -1,6 +1,6 @@
 import { createStore, Store, combineReducers } from 'redux'
 import { devToolsEnhancer } from 'redux-devtools-extension'
-import { authReducer } from '../auth/authReducer'
+import { authReducer } from 'auth/authReducer'
 import { State } from './state'
 
 export function createReduxStore(initialState: State): Store<State> {

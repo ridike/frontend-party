@@ -1,8 +1,8 @@
 import * as React from 'react'
-import styled, { css } from '../styled-typed'
+import styled, { css } from 'styled-typed'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSortUp, faSortDown, faSort }  from '@fortawesome/free-solid-svg-icons'
-import { transparency } from '../css-utils'
+import { transparency } from 'css-utils'
 
 export interface Pagination {
   page: number

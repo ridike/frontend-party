@@ -1,6 +1,6 @@
-import styled from '../styled-typed'
-import { TextInputField } from '../components/input'
-import { transparency } from '../css-utils'
+import styled from 'styled-typed'
+import { TextInputField } from 'components/input'
+import { transparency } from 'css-utils'
 
 export const LoginContainer = styled.div`
   font-family: ${props => props.theme.fonts.primary};
@@ -52,7 +52,7 @@ export const LoginHeader = styled.h1`
 `
 
 export const ValidationMessage = styled.div`
-  color: white;
+  color: #FFFFFF;
   font-size: 0.85em;
   opacity: 0;
   visibility: hidden;

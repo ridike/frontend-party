@@ -1,6 +1,6 @@
 import { Store } from 'redux'
 import { Session } from './session'
-import { State } from '../store'
+import { State } from 'store'
 import { userLoggedIn, userLoggedOut } from './actions'
 
 export class ReduxBackedSession implements Session {

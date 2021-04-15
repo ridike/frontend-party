@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Route, Redirect } from 'react-router'
 import { connect } from 'react-redux'
-import { State } from '../store'
+import { State } from 'store'
 
 function mapStateToProps(state: State) {
   return {

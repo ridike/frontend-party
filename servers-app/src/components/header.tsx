@@ -1,4 +1,4 @@
-import styled from '../styled-typed'
+import styled from 'styled-typed'
 import { History } from 'history'
 
 interface HeaderProps {

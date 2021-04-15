@@ -1,6 +1,6 @@
 import * as React from 'react'
-import styled, { css } from '../styled-typed'
-import { transparency } from '../css-utils'
+import styled, { css } from 'styled-typed'
+import { transparency } from 'css-utils'
 import { faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 

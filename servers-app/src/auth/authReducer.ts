@@ -1,4 +1,4 @@
-import { RootAction } from '../store'
+import { RootAction } from 'store'
 import { createInitialAuthState, AuthState } from './state'
 
 export function authReducer(state: Readonly<AuthState>|undefined, action: RootAction): AuthState {

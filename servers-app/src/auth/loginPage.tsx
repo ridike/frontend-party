@@ -1,18 +1,18 @@
 import * as React from 'react'
 import { History } from 'history'
-import styled from '../styled-typed'
-import { Navigation } from '../navigation'
-import { IconTextInput } from '../components/input'
-import { Link } from '../components/text'
-import { delay } from '../utils'
+import styled from 'styled-typed'
+import { Navigation } from 'navigation'
+import { IconTextInput } from 'components/input'
+import { Link } from 'components/text'
+import { delay } from 'utils'
 import {
   ValidationMessage,
   LoginForm,
   LoginHeader,
   LoginContainer
-} from '../components/loginComponents'
-import { ActionButton } from '../components/buttons'
-import { InfoCard } from '../components/infoCard'
+} from 'components/loginComponents'
+import { ActionButton } from 'components/buttons'
+import { InfoCard } from 'components/infoCard'
 
 const PasswordWrapper = styled.div`
   position: relative;

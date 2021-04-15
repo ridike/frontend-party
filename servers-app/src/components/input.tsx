@@ -1,6 +1,6 @@
 import * as React from 'react'
-import styled, { css } from '../styled-typed'
-import { Debounce } from '../debounce'
+import styled, { css } from 'styled-typed'
+import { Debounce } from 'debounce'
 import { IconProp } from '@fortawesome/fontawesome'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 

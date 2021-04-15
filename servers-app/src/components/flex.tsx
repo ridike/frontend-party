@@ -1,4 +1,4 @@
-import styled from '../styled-typed'
+import styled from 'styled-typed'
 
 const gutter = 30
 const gridSize = 12

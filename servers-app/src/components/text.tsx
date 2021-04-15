@@ -1,4 +1,4 @@
-import styled, { css } from '../styled-typed'
+import styled, { css } from 'styled-typed'
 
 export const Link = styled.a`
   color: ${props => props.theme.colors.brand};

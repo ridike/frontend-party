@@ -1,3 +1,3 @@
-import { AuthAction } from '../auth'
+import { AuthAction } from 'auth'
 
 export type RootAction = AuthAction

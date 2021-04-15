@@ -1,4 +1,4 @@
-import { HttpService } from '../httpService'
+import { HttpService } from 'httpService'
 
 export interface Server {
   name: string

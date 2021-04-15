@@ -1,11 +1,12 @@
 import React from 'react'
-import styled from '../styled-typed'
+import styled from 'styled-typed'
 import { History, Location } from 'history'
-import { TableLoader } from '../components/loaders'
-import { DataTable, HeaderRow, DataRow, TableHeader, Cell, Sorting } from '../components/table'
+import { TableLoader } from 'components/loaders'
+import { DataTable, HeaderRow, DataRow, TableHeader, Cell, Sorting } from 'components/table'
+import { Messages, MessageKind } from 'components/messages'
 import { ServersInfoService, Server } from './infoService'
-import { parseSearch, renderSearch } from '../navigation'
-import { PageHeader } from '../components/text'
+import { parseSearch, renderSearch } from 'navigation'
+import { PageHeader } from 'components/text'
 
 const ServersPage = styled.div`
   padding: 0 0 3em 0;
@@ -27,6 +28,7 @@ function List(props: ListProps) {
   const [ loading, setLoading ] = React.useState<boolean>(true)
   const [ sortBy, setSortBy ] = React.useState<string>(queryItems.sortBy || 'name')
   const [ sortDirection, setSortDirection ] = React.useState<SortDirection>(queryItems.sortDirection as SortDirection || 'desc')
+  const [ errorMessageText, setErrorMessageText] = React.useState<string>('')
 
   React.useEffect(() => {
     async function getServers() {
@@ -34,8 +36,7 @@ function List(props: ListProps) {
         const list = await props.serversInfoService.getServersList()
         setServers(sortBy ? sortServers(list) : list)
       } catch {
-        // todo display messaage
-        alert('could not fetch server list')
+        setErrorMessageText('Could not fetch server list. Please try again later.')
       } finally {
         setLoading(false)
       }
@@ -78,8 +79,18 @@ function List(props: ListProps) {
     prop: sortBy,
     direction: sortDirection,
   }
+  const message = {
+    id: 'server_error',
+    status: 'error' as MessageKind,
+    text: errorMessageText,
+    visible: true
+  }
   return (
     <ServersPage>
+      <Messages
+        messages={errorMessageText ? [ message ] : []}
+        hideMessage={() => setErrorMessageText('')}
+      />
       <PageHeader>Servers list</PageHeader>
       <DataTable columnWidths={[null, '8.75em']}>
         <HeaderRow>

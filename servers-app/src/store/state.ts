@@ -1,4 +1,4 @@
-import { AuthState, createInitialAuthState, applySavedAuthState } from '../auth/state'
+import { AuthState, createInitialAuthState, applySavedAuthState } from 'auth/state'
 
 export interface State {
   auth: Readonly<AuthState>

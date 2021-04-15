@@ -1,6 +1,6 @@
 import React from 'react'
-import styled, { css, FlattenInterpolation } from '../styled-typed'
-import { transparency } from '../css-utils'
+import styled, { css, FlattenInterpolation } from 'styled-typed'
+import { transparency } from 'css-utils'
 
 export type ButtonKind = 'default'|'disabled'|'action'|'success'|'destructive'
 export type ButtonSize = 'small'|'medium'|'large'
@@ -130,10 +130,6 @@ interface ButtonProps<T> {
 }
 
 class Button<T extends ButtonComponentProps> extends React.Component<ButtonProps<T>> {
-  constructor(props: ButtonProps<T>) {
-    super(props)
-  }
-
   onClick = async (evt: React.MouseEvent<any>) => {
     const clickHandler = this.props.componentProps.onClick || (() => {})
     await clickHandler(evt)

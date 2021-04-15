@@ -1,6 +1,6 @@
 import * as React from 'react'
-import styled, { keyframes } from '../styled-typed'
-import { DataRow, Cell } from '../components/table'
+import styled, { keyframes } from 'styled-typed'
+import { DataRow, Cell } from 'components/table'
 import LoaderGif from './loader.gif'
 
 const FadeInAnimation = keyframes`

@@ -1,9 +1,9 @@
 import {
   // Route,
   match as RouteMatch } from 'react-router'
-// import { ReactComponent } from '../reactUtils'
+// import { ReactComponent } from 'reactUtils'
 // import { Subtract } from 'utility-types'
-import { Navigation } from '../navigation'
+import { Navigation } from 'navigation'
 
 export interface WithNavigationProps<TRouteParams> {
   navigation: Navigation
